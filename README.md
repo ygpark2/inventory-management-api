@@ -30,6 +30,19 @@ There are two ways of setting up dev environment. If you opt docker, the system 
 ## Running tests
 You can run tests with `make test` or `make dev-test`.
 
+## Heroku deployment
+
+### Heroku logs
+
+To check the logs from the deployed application.
+
+`heroku logs -a <app_id>`
+
+### Bash Shell CLI
+
+This command will give you a bash shell interface.
+
+`heroku run bash -a <app_id>`
 
 # Usage
 
@@ -69,15 +82,31 @@ You need to set `Bearer {JWT}` in the screen. {JWT} can be obtained from Login R
 
 ### Item Update Test
 
+When you try to update the inventory of the product, you will two different responses according to your gruop's access level.
+
+This is the request screen for the update.
+
+![Item update request - Steps](./images/item_update_request.png)
+
+
+When you login customer account, you will see the next response.
+
+![Item update request - Steps](./images/item_update_success_response.png)
+
+When you login manager account, you will see the next response.
+
+![Item update request - Steps](./images/item_update_failed_response.png)
 
 
 ### Order Test
 
+When you make an order, you need to do on the next screen.
 
-##### Running django commands
-Since the project is running in a docker container you can run django commands
-with `docker-compose exec django ./manage.py <command>`.
+![New Order request - Steps](./images/order_new_request.png)
 
+You will see the next response for the new order request.
+
+![New Order response - Steps](./images/order_new_response.png)
 
 ##### Owning files
-When generating new files through `startapp` or `makemigrations` for instance, the files will not be owned by you and you won't have permission to modify. You can fix that by running `make chown`.
+When generating new files through `startapp` or `makemigrations` for instance, the files will have permission issues sometimes. You can fix that by running `make chown`.
