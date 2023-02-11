@@ -1,0 +1,1 @@
+web: gunicorn inventory-management-api.wsgi --log-file -
