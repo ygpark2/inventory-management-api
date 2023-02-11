@@ -12,7 +12,7 @@ MIDDLEWARE += ['whitenoise.middleware.WhiteNoiseMiddleware']
 
 ALLOWED_HOSTS = [".herokuapp.com"]
 
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATIC_ROOT = os.path.join(BASE_DIR, "..", "..", "staticfiles")
 
 # Enable WhiteNoise's GZip compression of static assets.
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"

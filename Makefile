@@ -23,6 +23,9 @@ shell:
 test:
 	docker compose exec django ./manage.py test --noinput
 
+collectstatic:
+	cd api && pipenv run python3 ./manage.py collectstatic --noinput --settings=api.settings.prod
+
 
 dev-migrate:
 	cd api && pipenv run python3 ./manage.py migrate
