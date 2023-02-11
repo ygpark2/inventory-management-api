@@ -46,16 +46,29 @@ This command will give you a bash shell interface.
 
 # Usage
 
+User List
+
+1) customer ( ID : customer, PW : customer )
+2) manager ( ID : manager, PW : manager )
+
+Permission Check is based on Django Model Permission
+
 ## For API Docs
 
-http://localhost:8000/v1/docs/
+https://inventory-management-api.herokuapp.com/v1/docs/
 
 ## For API Test with swagger UI
 
-http://localhost:8000/swagger/
+https://inventory-management-api.herokuapp.com/swagger/
 
+## For Admin Page
 
-## API Test Steps using swagger
+https://inventory-management-api.herokuapp.com/admin/login/?next=/admin/
+
+ID : admin
+PW : admin
+
+## API Test using swagger
 
 ### User Register
 
@@ -67,9 +80,14 @@ You can see the result of your request.
 
 ![User Register Response - Steps](./images/acuser_register_response.png)
 
+
 ### User Login to obtain JWT
 
+Choose one the users (customer, manager) to login for testing.
+
 ![User Login Request - Steps](./images/jwt_login_input.png)
+
+You need to copy the `access` value from json response for JWT authorization in the next section.
 
 ![User Login Response - Steps](./images/jwt_login_response.png)
 
@@ -89,11 +107,11 @@ This is the request screen for the update.
 ![Item update request - Steps](./images/item_update_request.png)
 
 
-When you login customer account, you will see the next response.
+When you login with manager account, you will see the next response. Manager level user should be able to alter the product information including inventory data.
 
 ![Item update request - Steps](./images/item_update_success_response.png)
 
-When you login manager account, you will see the next response.
+When you login with customer account, you will see the next response. This is because customer account does not have a permission to update product information. Ths is why you received the permission denied response.
 
 ![Item update request - Steps](./images/item_update_failed_response.png)
 
@@ -107,6 +125,10 @@ When you make an order, you need to do on the next screen.
 You will see the next response for the new order request.
 
 ![New Order response - Steps](./images/order_new_response.png)
+
+If you make an order which is above the product's inventory quantity, you will see the next error which is `out of stock` error message.
+
+![New Order response - Steps](./images/order_outofstack_response.png)
 
 ##### Owning files
 When generating new files through `startapp` or `makemigrations` for instance, the files will have permission issues sometimes. You can fix that by running `make chown`.

@@ -8,7 +8,7 @@ schema_view = get_schema_view(
       title="Inventory Management API",
       default_version='v1',
       description="This API is for product inventory management",
-      terms_of_service="https://www.scvconsultants.com",
+      terms_of_service="https://inventory-management-api.herokuapp.com/v1/docs/",
       contact=openapi.Contact(email="ygpark2@gmail.com"),
       license=openapi.License(name="MIT License"),
    ),
